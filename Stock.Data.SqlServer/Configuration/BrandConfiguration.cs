@@ -4,9 +4,9 @@ using Stock.Domain.Entities;
 
 namespace Stock.Data.SqlServer.Configuration
 {
-    public class ProductConfiguration : EntityBaseConfiguration<Product>
+    public class BrandConfiguration : EntityBaseConfiguration<Brand>
     {
-        public override void Configure(EntityTypeBuilder<Product> builder)
+        public override void Configure(EntityTypeBuilder<Brand> builder)
         {
             base.Configure(builder);
 
@@ -18,25 +18,6 @@ namespace Stock.Data.SqlServer.Configuration
             builder
                 .Property(p => p.Name)
                 .HasMaxLength(500)
-                .IsRequired();
-
-            builder
-                .Property(p => p.Description)
-                .HasMaxLength(1000)
-                .IsRequired(false);
-
-            builder
-                .Property(p => p.SKU)
-                .HasMaxLength(50)
-                .IsRequired();
-
-            builder
-                .Property(p => p.EAN)
-                .HasMaxLength(13)
-                .IsRequired(false);
-
-            builder
-                .Property(p => p.SizeId)
                 .IsRequired();
 
             builder

@@ -7,6 +7,8 @@ namespace Stock.Domain.Entities
     {
         public int Id { get; set; }
 
+        public bool Active { get; set; } = true;
+
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

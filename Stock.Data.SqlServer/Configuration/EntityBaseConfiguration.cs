@@ -12,6 +12,10 @@ namespace Stock.Data.SqlServer.Configuration
             builder.HasKey(p => p.Id);
 
             builder
+                .Property(p => p.Active)
+                .IsRequired();
+
+            builder
                 .Property(p => p.CreatedDate)
                 .IsRequired();
         }

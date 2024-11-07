@@ -57,7 +57,7 @@ namespace Stock.Domain.Services
         {
             var product = await GetProductByKey(model.Key);
 
-            product.Update(model.Name);
+            product.Update(model.Name, model.Description, model.BrandId, model.SKU, model.EAN, model.SizeId);
 
             _repository.Update(product);
             await _unitOfWork.CommitAsync();
@@ -67,7 +67,7 @@ namespace Stock.Domain.Services
         {
             var product = await GetProductByKey(key);
 
-            product.SetInactive();
+            product.SetStatus(false);
 
             _repository.Update(product);
             await _unitOfWork.CommitAsync();
