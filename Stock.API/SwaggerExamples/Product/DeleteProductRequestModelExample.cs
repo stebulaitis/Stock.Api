@@ -2,7 +2,7 @@
 using Stock.Domain.Models.Product.Delete;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace Stock.API.SwaggerExamples
+namespace Stock.API.SwaggerExamples.Product
 {
     public class DeleteProductRequestModelExample : IExamplesProvider<DeleteProductRequestModel>
     {

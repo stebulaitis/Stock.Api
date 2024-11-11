@@ -12,6 +12,6 @@ namespace Stock.Domain.Models.Product.Add
 
         public string EAN { get; set; }
 
-        public string Size { get; set; }
+        public int SizeId { get; set; }
     }
 }

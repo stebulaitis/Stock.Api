@@ -23,11 +23,13 @@ namespace Stock.CrossCutting.IoC
 
             //Services
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBrandService, BrandService>();
 
             //Repositories
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWorkStock>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
 
             //Cqrs
             services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(IDomainAssembly).Assembly));

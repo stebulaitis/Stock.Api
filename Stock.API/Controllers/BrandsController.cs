@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Stock.API.SwaggerExamples.Product;
-using Stock.Domain.Models.Product.Add;
-using Stock.Domain.Models.Product.Delete;
-using Stock.Domain.Models.Product.Get;
-using Stock.Domain.Models.Product.Update;
+using Stock.API.SwaggerExamples.Brand;
+using Stock.Domain.Models.Brand.Add;
+using Stock.Domain.Models.Brand.Delete;
+using Stock.Domain.Models.Brand.Get;
+using Stock.Domain.Models.Brand.Update;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -13,19 +13,19 @@ namespace Stock.API.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    public class ProductsController(IMediator mediator) : ApiBaseController
+    public class BrandsController(IMediator mediator) : ApiBaseController
     {
         private readonly IMediator _mediator = mediator;
 
         /// <summary>
-        /// Add New Product
+        /// Add New Brand
         /// </summary>
         /// <param name="command">Request model.</param>
         /// <returns></returns>
         [HttpPost]
-        [SwaggerRequestExample(typeof(AddProductRequestModel), typeof(AddProductRequestModelExample))]
-        [SwaggerResponse(StatusCodes.Status200OK, "Created Product.", typeof(AddProductResponseModel))]
-        public async Task<IActionResult> Post([FromBody] AddProductRequestModel command)
+        [SwaggerRequestExample(typeof(AddBrandRequestModel), typeof(AddBrandRequestModelExample))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Created Brand.", typeof(AddBrandResponseModel))]
+        public async Task<IActionResult> Post([FromBody] AddBrandRequestModel command)
         {
             var response = await _mediator.Send(command);
 
@@ -33,13 +33,13 @@ namespace Stock.API.Controllers
         }
 
         /// <summary>
-        /// Get All Products
+        /// Get All Brands
         /// </summary>
         /// <param name="query"></param>
-        /// <returns>All Products Paginated</returns>
+        /// <returns>All Brands Paginated</returns>
         [HttpGet("all")]
-        [SwaggerResponse(StatusCodes.Status200OK, "Get All Product.", typeof(GetProductsResponseModel))]
-        public async Task<IActionResult> GetProducts([FromQuery] GetProductsRequestModel query)
+        [SwaggerResponse(StatusCodes.Status200OK, "Get All Brand.", typeof(GetBrandsResponseModel))]
+        public async Task<IActionResult> GetBrands([FromQuery] GetBrandsRequestModel query)
         {
             var result = await _mediator.Send(query);
 
@@ -47,13 +47,13 @@ namespace Stock.API.Controllers
         }
 
         /// <summary>
-        /// Get Product by Key
+        /// Get Brand by Key
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpGet]
-        [SwaggerResponse(StatusCodes.Status200OK, "Get Product by Key.", typeof(GetProductResponseModel))]
-        public async Task<IActionResult> GetProduct([FromQuery] GetProductRequestModel query)
+        [SwaggerResponse(StatusCodes.Status200OK, "Get Brand by Key.", typeof(GetBrandResponseModel))]
+        public async Task<IActionResult> GetBrand([FromQuery] GetBrandRequestModel query)
         {
             var result = await _mediator.Send(query);
 
@@ -61,14 +61,14 @@ namespace Stock.API.Controllers
         }
 
         /// <summary>
-        /// Alter Product by Key
+        /// Alter Brand by Key
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut]
-        [SwaggerRequestExample(typeof(UpdateProductRequestModel), typeof(UpdateProductRequestModelExample))]
+        [SwaggerRequestExample(typeof(UpdateBrandRequestModel), typeof(UpdateBrandRequestModelExample))]
         [SwaggerResponse(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Put(UpdateProductRequestModel command)
+        public async Task<IActionResult> Put(UpdateBrandRequestModel command)
         {
             await _mediator.Send(command);
 
@@ -76,14 +76,14 @@ namespace Stock.API.Controllers
         }
 
         /// <summary>
-        /// Delete Product by Key
+        /// Delete Brand by Key
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpDelete]
-        [SwaggerRequestExample(typeof(DeleteProductRequestModel), typeof(DeleteProductRequestModelExample))]
+        [SwaggerRequestExample(typeof(DeleteBrandRequestModel), typeof(DeleteBrandRequestModelExample))]
         [SwaggerResponse(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Delete(DeleteProductRequestModel command)
+        public async Task<IActionResult> Delete(DeleteBrandRequestModel command)
         {
             await _mediator.Send(command);
 
